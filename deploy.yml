@@ -3,16 +3,15 @@ version: "2.0"
 
 services:
   app:
-    image: dimokus88/kujira:0.0.1
+    image: dimokus88/paloma:0.0.1
 
     
     env:
-     - "my_root_password=" # пароль root для подключения по ssh
-     - "MONIKER=" # имя ноды (Если нетрудно, укажите в имени ноды Akash, например: DimokusAkash
-     - "MNEMONIC=" # seed фраза от кошелька
-     - "LINK_KEY=" # ссылка на размещенный pirv-validator_key.json (прямое скачивание). Подойдет и от других тестнетов на базе Cosmos.
-     - "SNAP_RPC=http://3.39.245.44:26657"
-    
+     - "my_root_password=" # root password for ssh connection. пароль root для подключения по ssh. 
+     - "MONIKER=" # node name (If it is not difficult, specify Akash in the node name, for example: DimokusAkash). имя ноды (Если нетрудно, укажите в имени ноды Akash, например: DimokusAkash)
+     - "MNEMONIC=" # seed phrase from the Clan wallet. seed фраза от кошелька Clan.
+     #- "LINK_KEY=" # link to the posted pirv-validator_key.json (direct download). It will also work from other Cosmos-based testnets. ссылка на размещенный pirv-validator_key.json (прямое скачивание). Подойдет и от других тестнетов на базе Cosmos.
+     - "SNAP_RPC=http://157.245.76.119:26657"
      
     expose:
       - port: 80
@@ -33,7 +32,7 @@ profiles:
         memory:
           size: 4Gi
         storage:
-          size: 70Gi
+          size: 150Gi
         
         
   placement:
@@ -46,7 +45,7 @@ profiles:
       pricing:
         app:
           denom: uakt
-          amount: 1000
+          amount: 10000
 deployment:
   app:
     akash:
