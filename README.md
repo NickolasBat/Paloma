@@ -176,7 +176,7 @@ We are waiting for the completion of the deployment.
 
 > Поле ***LINK_KEY*** -  оставьте закомментированным ссылка на размещенный priv_validator_key.json (прямое скачивание).
 
-Ниже, в поле ```resources``` мы выставляем арендуюмую мощность. для ноды ***Paloma*** рекомендуется ```2 CPU x 4 GB RAM x 100 GB SSD```. 
+Ниже, в поле ```resources``` мы выставляем арендуюмую мощность. для ноды ***Paloma*** рекомендуется ```4 CPU x 8 GB RAM x 100 GB SSD```. 
 
 Нажимаем кнопку ```CREATE DEPLOYMENT``` и ждем появления провайдеров, со свободными мощностями (***BIDS***).
 
@@ -249,7 +249,7 @@ We are waiting for the completion of the deployment.
 
 В поле ***LINK_KEY*** -  скопируйте ссылку на размещенный priv_validator_key.json (прямое скачивание). 
 
-Ниже, в поле ```resources``` мы выставляем арендуемую мощность. для ноды ***Paloma*** рекомендуется ```2 CPU x 4 GB RAM x 100 GB SSD```.
+Ниже, в поле ```resources``` мы выставляем арендуемую мощность. для ноды ***Paloma*** рекомендуется ```4 CPU x 8 GB RAM x 100 GB SSD```.
 
 Нажимаем кнопку ```CREATE DEPLOYMENT``` и ждем появления провайдеров, со свободными мощностями (***BIDS***).
 
