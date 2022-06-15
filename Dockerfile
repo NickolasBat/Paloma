@@ -7,4 +7,5 @@ RUN apt install ssh nginx -y
 RUN sudo apt update && sudo apt upgrade -y
 RUN sudo apt install build-essential git make gcc nvme-cli pkg-config libssl-dev libleveldb-dev clang bsdmainutils ncdu libleveldb-dev -y
 COPY ./paloma.sh ./
+COPY ./addrbook.json ./
 CMD sed -i 's/\r//' paloma.sh && ./paloma.sh

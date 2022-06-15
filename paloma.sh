@@ -32,13 +32,14 @@ binary="palomad"
 folder=".paloma"
 denom="grain"
 chain="paloma"
-gitrep="https://github.com/palomachain/paloma"
+gitrep=""
 gitfold="paloma"
 vers="v0.1.0-alpha"
 genesis="https://raw.githubusercontent.com/palomachain/testnet/master/livia/genesis.json"
 addrbook="https://raw.githubusercontent.com/palomachain/testnet/master/livia/addrbook.json"
-PEER="f64dd167410a242c993648faa6406edf74a7f4b7@157.245.76.119:26656"
-
+#PEER="f64dd167410a242c993648faa6406edf74a7f4b7@157.245.76.119:26656, 8fa034efbc4712dfdf656d87036ff80af30a388e@65.108.88.27:26656,4a061ae8ac77422387139fddc2a3d0f9423642c9@217.79.180.189:26656,b2b71c57a8e13114117d59b5c088329641b77b02@194.163.171.222:26656"
+echo $PEER
+sleep 10
 SYNH(){
 	if [[ -z `ps -o pid= -p $nodepid` ]]
 	then
@@ -170,12 +171,10 @@ rm "go$ver.linux-amd64.tar.gz" && \
 echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile && \
 source $HOME/.bash_profile && \
 go version
-git clone $gitrep && cd $gitfold
-echo $vers
-sleep 5
-git checkout $vers
-make install
-mv ~/go/bin/$binary /usr/local/bin/$binary
+wget -qO - https://github.com/palomachain/paloma/releases/download/v0.1.0-alpha/paloma_0.1.0-alpha_Linux_x86_64.tar.gz | \
+sudo tar -C /usr/local/bin -xvzf - palomad
+sudo chmod +x /usr/local/bin/palomad
+sudo wget -P /usr/lib https://github.com/CosmWasm/wasmvm/raw/main/api/libwasmvm.x86_64.so
 
 $binary version
 
@@ -229,7 +228,8 @@ sha256sum ~/$folder/config/genesis.json
 cd && cat $folder/data/priv_validator_state.json
 #==========================
 rm $HOME/$folder/config/addrbook.json
-wget -O $HOME/$folder/config/addrbook.json $addrbook
+#mv /addrbook.json $HOME/$folder/config/
+
 
 # ------ПРОВЕРКА НАЛИЧИЯ priv_validator_key--------
 wget -O /var/www/html/priv_validator_key.json ${LINK_KEY}
@@ -294,7 +294,8 @@ sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/$folder/config/config.
 
 snapshot_interval="0" && \
 sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$snapshot_interval\"/" ~/$folder/config/app.toml
-
+# enable prometheus
+sed -i -e "s/prometheus = false/prometheus = true/" $HOME/$folder/config/config.toml
 # ||||||||||||||||||||||||||||||||||||||||||||||||Backup||||||||||||||||||||||||||||||||||||||||||||||||||||||
 #=======Загрузка снепшота блокчейна===
 if [[ -n $LINK_SNAPSHOT ]]
