@@ -24,9 +24,6 @@ Before you start - subscribe to our news channels:
   
 [English version](https://github.com/Dimokus88/paloma#english-version) | [Русская версия](https://github.com/Dimokus88/paloma#%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B0%D1%8F-%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F)
   
-[Useful Commands | Полезные команды](https://github.com/Dimokus88/paloma#useful-commands--%D0%BF%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D1%8B%D0%B5-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B)
-</div>
-
 # English version
 
 > If you want to migrate your Paloma node to Akash, or if you have priv_validator_key.json, then go [to this step](https://github.com/Dimokus88/paloma#if-you-have-priv_validator_keyjson).
