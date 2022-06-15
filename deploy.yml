@@ -28,11 +28,11 @@ profiles:
     app:
       resources:
         cpu:
-          units: 2.0
+          units: 4.0
         memory:
-          size: 4Gi
+          size: 8Gi
         storage:
-          size: 150Gi
+          size: 100Gi
         
         
   placement:
