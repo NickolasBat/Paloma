@@ -31,7 +31,7 @@ Before you start - subscribe to our news channels:
 
 > If you want to migrate your Paloma node to Akash, or if you have priv_validator_key.json, then go [to this step](https://github.com/Dimokus88/paloma#if-you-have-priv_validator_keyjson).
 
->You must have more than ***5 AKT*** on your Akash wallet (5 АКТ will be blocked for deployment + transaction gas payment). АКТ can be found on the exchanges Gate, AsendeX, Osmosis . Also in our community[Akash RU](https://t.me/akash_ru) we regularly hold events in which we distribute АКТ.
+>You must have more than ***5 AKT*** on your Akash wallet (5 АКТ will be blocked for deployment + transaction gas payment). АКТ can be found on the exchanges Gate, AsendeX, Osmosis . Also in our community [Akash RU](https://t.me/akash_ru) we regularly hold events in which we distribute АКТ.
 
 ## If starting for the first time:
 
