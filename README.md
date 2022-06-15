@@ -76,8 +76,7 @@ We are waiting for the completion of the deployment.
 
 <div align="center">
   
-![image](https://user-images.githubusercontent.com/23629420/173745772-d1555b18-b658-4fdc-80a6-8f43c05f7869.png)
-
+![image](https://user-images.githubusercontent.com/23629420/173746686-7fb44445-ac42-49d3-a0be-2845e889f9a2.png)
   
 </div>
 
@@ -89,11 +88,10 @@ Thus, you will get a link to a direct download of the file:
 
 * Go to the ```UPDATE``` tab, uncomment the ***LINK_KEY*** line (remove the # symbol) and paste the link to directly download your ```priv_validator_key.json``` file. Then click ```UPDATE DEPLOYMENT```. Confirm the transaction.
 
-*In the process of work, your address ***Paloma*** will be displayed, you need to request tokens to it. Tokens from the tap are requested automatically inside the image.
+*In the process of work, your address ***Paloma*** will be displayed, you need to request tokens to it.
 
 <div align="center">
-  
-![image](https://user-images.githubusercontent.com/23629420/171263925-fb3abceb-3816-4c09-8470-c247d332a48e.png)
+  ![image](https://user-images.githubusercontent.com/23629420/173747411-b4ebabb5-9f9d-4af7-ae75-6d1834485be6.png)
  
 </div>
 
@@ -138,11 +136,11 @@ We are waiting for the completion of the deployment.
 
 * In the ```LOGS```  tab , you can view the operation of the node. Synchronization will start from the block that is ***2000*** blocks "below" the last one. For example, if there are ***596562*** blocks in the network at the time the node is launched, then synchronization and "catching up" will start from 596562-2000= ***594562*** blocks. After full synchronization, a validator will be created (***if it has not been created earlier***) and the node will enter the automatic mode of operation. Every ***5 minutes*** the balance will be checked, and if it is positive - auto-delegation to yourself. There will also be a check on the jail, the exit from the jail will be performed automatically.
 
-* In the process of work, your address ***Paloma*** will be displayed, you need to request tokens to it. Tokens from the tap are requested automatically inside the image.
+* In the process of work, your address ***Paloma*** will be displayed, you need to request tokens to it. 
 
 <div align="center">
   
-![image](https://user-images.githubusercontent.com/23629420/171263901-721229e6-96b0-4bd9-adbf-4f0edfed354a.png)
+![image](https://user-images.githubusercontent.com/23629420/173747354-bd4421e5-49f7-496f-a2ea-8fae3cf9d135.png)
  
 </div>
 
@@ -200,7 +198,7 @@ We are waiting for the completion of the deployment.
 
 <div align="center">
   
-![image](https://user-images.githubusercontent.com/23629420/171270347-472f6652-e624-4e9c-bd5f-2655c3f12a97.png)
+![image](https://user-images.githubusercontent.com/23629420/173746905-e96cad6c-81ac-42ab-96b1-2a937a3c8dce.png)
   
 </div>
 
@@ -212,11 +210,10 @@ We are waiting for the completion of the deployment.
 
 * Перейдите во вкладку ```UPDATE```, расскаментируйте строку  ***LINK_KEY*** (удалив символ #) и вставьте ссылку на прямое скачивание вашего файла ```priv_validator_key.json```. После чего нажмите ```UPDATE DEPLOYMENT```. Подтвердите транзакцию.
 
-* В процессе работы будет выводится ваш адрес ***Paloma***, на него нужно запросить токены. Токены из крана запрашиваются автоматически внутри образа.
-
+* В процессе работы будет выводится ваш адрес ***Paloma***, на него нужно запросить токены.
 <div align="center">
   
-![image](https://user-images.githubusercontent.com/23629420/171263863-67705657-e0aa-4fe1-9530-ac97007318ba.png)
+![image](https://user-images.githubusercontent.com/23629420/173747184-6272f698-d153-4a78-b529-ebf31097daa3.png)
  
 </div>
 
@@ -264,12 +261,11 @@ We are waiting for the completion of the deployment.
 
 * В вкладке ```LOGS``` можете наблюдать работу ноды. Синхронизация начнеся с блока который на ***2000*** блоков "ниже" последнего, например если в сети на момент запуска ноды ***596562*** блоков, то синхронизивароться и "догонять" начнет с 596562-2000= ***594562*** блока. После чего будет создан валидатор (если он не был созда ранее) и нода войдет в автоматический режим работы. Каждые  5 минут будет проверяться баланс, и в случае если он положителен - автоделегирование на себя. Так же будет происходить проверка на тюрьму, выход из тюрьмы будет выполнен автоматически.
 
-* В процессе работы будет выводится ваш адрес ***Paloma***, на него нужно запросить токены. Токены из крана запрашиваются автоматически внутри образа.
+* В процессе работы будет выводится ваш адрес ***Paloma***, на него нужно запросить токены. 
 
 <div align="center">
   
-![image](https://user-images.githubusercontent.com/23629420/171263840-eace007a-3c06-41bf-894a-9514e3c70163.png)
-
+![image](https://user-images.githubusercontent.com/23629420/173747255-3ca12338-9eec-4d56-9d8d-7e2becf34167.png)
  
 </div>
 
