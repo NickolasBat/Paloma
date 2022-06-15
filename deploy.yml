@@ -9,7 +9,7 @@ services:
     env:
      - "my_root_password=" # root password for ssh connection. пароль root для подключения по ssh. 
      - "MONIKER=" # node name (If it is not difficult, specify Akash in the node name, for example: DimokusAkash). имя ноды (Если нетрудно, укажите в имени ноды Akash, например: DimokusAkash)
-     - "MNEMONIC=" # seed phrase from the Clan wallet. seed фраза от кошелька Clan.
+     - "MNEMONIC=" # seed phrase from the wallet. seed фраза от кошелька .
      #- "LINK_KEY=" # link to the posted pirv-validator_key.json (direct download). It will also work from other Cosmos-based testnets. ссылка на размещенный pirv-validator_key.json (прямое скачивание). Подойдет и от других тестнетов на базе Cosmos.
      - "PEER=dce45627fce95b5eacc9b931fab5afe70d70e917@135.181.204.159:26656,f64dd167410a242c993648faa6406edf74a7f4b7@157.245.76.119:26656,8fa034efbc4712dfdf656d87036ff80af30a388e@65.108.88.27:26656,4a061ae8ac77422387139fddc2a3d0f9423642c9@217.79.180.189:26656,b2b71c57a8e13114117d59b5c088329641b77b02@194.163.171.222:26656"
      
