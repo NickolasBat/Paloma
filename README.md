@@ -16,8 +16,8 @@ Before you start - subscribe to our news channels:
 </div>
 <div align="center">
   
-| [Discord paloma](https://discord.com/invite/WVq4YNUeu9) | [Explorer paloma](https://paloma.explorers.guru/) | [Site paloma](https://paloma.app/) | [Twitter paloma](https://twitter.com/Teampaloma) |
-|:--:|:--:|:--:|:--:|
+| [Explorer paloma](https://paloma.explorers.guru/) | [Telegram Paloma](https://t.me/palomachain) | [Twitter paloma](https://twitter.com/paloma_chain) |
+|:--:|:--:|:--:|
   
 </div>
 <div align="center">
@@ -68,7 +68,7 @@ We are waiting for the completion of the deployment.
 
 <div align="center">
   
-![image](https://user-images.githubusercontent.com/23629420/171269920-572ee8c5-5e9b-4b3f-b7a6-56f704200d7a.png)
+![image](https://user-images.githubusercontent.com/23629420/173746034-e1d25a29-f6b6-45d5-bb55-56f0915ec909.png)
   
 </div>
 
@@ -76,7 +76,8 @@ We are waiting for the completion of the deployment.
 
 <div align="center">
   
-![image](https://user-images.githubusercontent.com/23629420/171270286-4d33c89d-64c8-4807-b8a1-ca853163fd42.png)
+![image](https://user-images.githubusercontent.com/23629420/173745772-d1555b18-b658-4fdc-80a6-8f43c05f7869.png)
+
   
 </div>
 
@@ -191,7 +192,7 @@ We are waiting for the completion of the deployment.
 
 <div align="center">
   
-![image](https://user-images.githubusercontent.com/23629420/171269962-0010a5be-8e45-4dec-a7c9-156fcaedf1cc.png)
+![image](https://user-images.githubusercontent.com/23629420/173746173-33bc299f-1921-47c5-ba64-71ed2957b239.png)
   
 </div>
 
