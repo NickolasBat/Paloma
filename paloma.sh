@@ -34,9 +34,9 @@ denom="grain"
 chain="paloma"
 gitrep=""
 gitfold="paloma"
-vers="v0.1.0-alpha"
-genesis="https://raw.githubusercontent.com/palomachain/testnet/master/livia/genesis.json"
-addrbook="https://raw.githubusercontent.com/palomachain/testnet/master/livia/addrbook.json"
+#vers="v0.1.0-alpha"
+genesis="https://raw.githubusercontent.com/palomachain/testnet/master/passerina/genesis.json"
+addrbook="https://raw.githubusercontent.com/palomachain/testnet/master/passerina/addrbook.json"
 #PEER="f64dd167410a242c993648faa6406edf74a7f4b7@157.245.76.119:26656, 8fa034efbc4712dfdf656d87036ff80af30a388e@65.108.88.27:26656,4a061ae8ac77422387139fddc2a3d0f9423642c9@217.79.180.189:26656,b2b71c57a8e13114117d59b5c088329641b77b02@194.163.171.222:26656"
 echo $PEER
 sleep 10
@@ -90,7 +90,16 @@ do
 	echo =============Проверьте корректность ключей валидатора!=================
 	echo =======================================================================
 	cat /root/$folder/config/priv_validator_key.json
-	sleep 20
+	sleep 5
+	echo =================================================
+	echo ===============WALLET NAME and PASS==============
+	echo =================================================
+	echo =========== Name ${WALLET_NAME} Имя =============
+	echo ========== Pass ${PASSWALLET} Пароль ============
+	echo =================================================
+	echo =============Имя кошелька и его пароль===========
+	echo =================================================
+	sleep 5
 	echo =================================================
 	echo ===============Balance check...==================
 	echo =================================================
@@ -163,15 +172,8 @@ done
 
 #======================================================== КОНЕЦ БЛОКА ФУНКЦИЙ ====================================================================================
 
-ver="1.18.1" && \
-wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
-sudo rm -rf /usr/local/go && \
-sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" && \
-rm "go$ver.linux-amd64.tar.gz" && \
-echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile && \
-source $HOME/.bash_profile && \
-go version
-wget -qO - https://github.com/palomachain/paloma/releases/download/v0.1.0-alpha/paloma_0.1.0-alpha_Linux_x86_64.tar.gz | \
+
+wget -qO - https://github.com/palomachain/paloma/releases/download/v0.2.1-prealpha/paloma_0.2.1-prealpha_Linux_x86_64v3.tar.gz | \
 sudo tar -C /usr/local/bin -xvzf - palomad
 sudo chmod +x /usr/local/bin/palomad
 sudo wget -P /usr/lib https://github.com/CosmWasm/wasmvm/raw/main/api/libwasmvm.x86_64.so
@@ -220,7 +222,7 @@ echo =====Your valoper=====
 echo ======Ваш valoper=====
 echo $valoper
 echo ===========================
-curl -X POST https://faucet.paloma.app/$address
+
 #==================================
 
 wget -O $HOME/$folder/config/genesis.json $genesis
@@ -228,7 +230,9 @@ sha256sum ~/$folder/config/genesis.json
 cd && cat $folder/data/priv_validator_state.json
 #==========================
 rm $HOME/$folder/config/addrbook.json
-#mv /addrbook.json $HOME/$folder/config/
+wget -qO $HOME/$folder/config/addrbook.json $addrbook
+
+mv /addrbook.json $HOME/$folder/config/
 
 
 # ------ПРОВЕРКА НАЛИЧИЯ priv_validator_key--------
@@ -258,11 +262,11 @@ else
 	sleep 2
 	cp /root/$folder/config/priv_validator_key.json /var/www/html/
 	echo =================================================================================================================================================
-	echo ======== priv_validator_key has been created! Go to the SHELL tab and run the command: cat /root/$folder/config/priv_validator_key.json =========
+	echo ======== priv_validator_key has been created! Go to the SHELL tab and run the command: cat /root/.paloma/config/priv_validator_key.json =========
 	echo ===== Save the output to a .json file on google drive. Place a direct link to download the file in the manifest and update the deployment! ======
 	echo ==========================================================Work has been suspended!===============================================================
 	echo =================================================================================================================================================
-	echo ========== priv_validator_key создан! Перейдите во вкладку SHELL и выполните команду: cat /root/$folder/config/priv_validator_key.json ==========
+	echo ========== priv_validator_key создан! Перейдите во вкладку SHELL и выполните команду: cat /root/.paloma/config/priv_validator_key.json ==========
 	echo == Сохраните вывод в файл с расширением .json на google диск. Разместите прямую ссылку на скачивание файла в манифесте и обновите деплоймент! ===
 	echo ==========================================================Работа приостановлена!=================================================================
 	
@@ -316,7 +320,7 @@ if [[ -n $SNAP_RPC ]]
 then
 
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 10000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
@@ -333,9 +337,9 @@ fi
 # |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 source $HOME/.bashrc
 #===========ЗАПУСК НОДЫ============
+$binary tendermint unsafe-reset-all
 echo =Run node...=
 nohup $binary start  > /dev/null 2>&1 & nodepid=`echo $!`
-echo $nodepid
 source $HOME/.bashrc
 echo =Node runing ! =
 sleep 20
