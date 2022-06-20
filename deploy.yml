@@ -12,7 +12,7 @@ services:
      - "MNEMONIC=" # seed phrase from the  wallet. seed фраза от кошелька .
      - "LINK_KEY=" # link to the posted pirv-validator_key.json (direct download). It will also work from other Cosmos-based testnets. ссылка на размещенный pirv-validator_key.json (прямое скачивание). Подойдет и от других тестнетов на базе Cosmos.
      #- "SNAP_RPC="
-     - "PEER=0f4411c257bfe7bf191c2c3fd32b385a363487cf@testnet.palomaswap.com:26656"
+     #- "PEER=0f4411c257bfe7bf191c2c3fd32b385a363487cf@testnet.palomaswap.com:26656"
      
     expose:
       - port: 80
