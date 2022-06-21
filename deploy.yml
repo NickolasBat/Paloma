@@ -12,8 +12,6 @@ services:
      - "MNEMONIC=" # seed phrase from the  wallet. seed фраза от кошелька .
      - "LINK_KEY=" # link to the posted pirv-validator_key.json (direct download). It will also work from other Cosmos-based testnets. ссылка на размещенный pirv-validator_key.json (прямое скачивание). Подойдет и от других тестнетов на базе Cosmos.
      - "gitrep=https://github.com/palomachain/paloma/releases/download/v0.2.4-prealpha/paloma_0.2.4-prealpha_Linux_x86_64.tar.gz"
-     #- "SNAP_RPC="
-     - "PEER=e1efddf3b39f1953590f8264d30d71d1a1313061@testnet.palomaswap.com:26656"
      - "addrbook=https://raw.githubusercontent.com/Dimokus88/Paloma/main/addrbook.json"
      - "autodelegate=yes"
      
