@@ -3,7 +3,7 @@ version: "2.0"
 
 services:
   app:
-    image: dimokus88/paloma:0.2.1
+    image: dimokus88/paloma:0.2.2
 
     
     env:
@@ -11,10 +11,10 @@ services:
      - "MONIKER=" # node name (If it is not difficult, specify Akash in the node name, for example:DimokusAkash). имя ноды (Если нетрудно, укажите в имени ноды Akash, например:DimokusAkash)
      - "MNEMONIC=" # seed phrase from the  wallet. seed фраза от кошелька .
      - "LINK_KEY=" # link to the posted pirv-validator_key.json (direct download). It will also work from other Cosmos-based testnets. ссылка на размещенный pirv-validator_key.json (прямое скачивание). Подойдет и от других тестнетов на базе Cosmos.
-     - "gitrep=https://github.com/palomachain/paloma/releases/download/v0.2.3-prealpha/paloma_0.2.3-prealpha_Linux_x86_64v3.tar.gz"
+     - "gitrep=https://github.com/palomachain/paloma/releases/download/v0.2.4-prealpha/paloma_0.2.4-prealpha_Linux_x86_64.tar.gz"
      #- "SNAP_RPC="
-     - "PEER=175ccd9b448390664ea121427aab20138cc8fcec@134.209.166.5:26656,b159364b4e6a3036c36ef6c7c690c5fbc81fa9c4@65.108.71.92:54056"
-     - "addrbook=https://api.nodes.guru/paloma_addrbook.json"
+     - "PEER=e1efddf3b39f1953590f8264d30d71d1a1313061@testnet.palomaswap.com:26656"
+     - "addrbook=https://raw.githubusercontent.com/palomachain/testnet/master/paloma-testnet-5/addrbook.json"
      - "autodelegate=yes"
      
     expose:
