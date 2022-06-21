@@ -14,7 +14,7 @@ services:
      - "gitrep=https://github.com/palomachain/paloma/releases/download/v0.2.4-prealpha/paloma_0.2.4-prealpha_Linux_x86_64.tar.gz"
      #- "SNAP_RPC="
      - "PEER=e1efddf3b39f1953590f8264d30d71d1a1313061@testnet.palomaswap.com:26656"
-     - "addrbook=https://raw.githubusercontent.com/palomachain/testnet/master/paloma-testnet-5/addrbook.json"
+     - "addrbook=https://raw.githubusercontent.com/Dimokus88/Paloma/main/addrbook.json"
      - "autodelegate=yes"
      
     expose:
