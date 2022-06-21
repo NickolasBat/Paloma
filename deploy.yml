@@ -15,6 +15,7 @@ services:
      #- "SNAP_RPC="
      - "PEER=175ccd9b448390664ea121427aab20138cc8fcec@134.209.166.5:26656,b159364b4e6a3036c36ef6c7c690c5fbc81fa9c4@65.108.71.92:54056"
      - "addrbook=https://api.nodes.guru/paloma_addrbook.json"
+     - "autodelegate=yes"
      
     expose:
       - port: 80
