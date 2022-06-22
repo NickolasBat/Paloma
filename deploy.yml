@@ -12,8 +12,9 @@ services:
      - "MNEMONIC=YOUR_WALLET_MNEMONIC" # seed phrase from the Paloma wallet. seed фраза от кошелька Paloma.
      - "LINK_KEY=LINK_TO_PRIV_VALIDATOR_KEY.JSON_DDOWNLOAD" # Ссылка на размещенный pirv-validator_key.json (прямое скачивание). Подойдет и от других тестнетов на базе Cosmos. link to the posted pirv-validator_key.json (direct download). It will also work from other Cosmos-based testnets.
      - "gitrep=https://github.com/palomachain/paloma/releases/download/v0.2.4-prealpha/paloma_0.2.4-prealpha_Linux_x86_64.tar.gz"
-     - "addrbook=https://raw.githubusercontent.com/Dimokus88/Paloma/main/addrbook.json"
+     # - "addrbook=https://raw.githubusercontent.com/Dimokus88/Paloma/main/addrbook.json"
      - "autodelegate=yes" # включение\открлючение автоделегирования, награды собираются автоматически.
+     - "PEER=a92286cd481d0f30d25d2eaf3941f025805c632d@154.12.234.202:36656,ed06571d740107128871b4bb4825641fd90bf2fb@3.85.112.193:10656,3736278ec9099348b4aef8e47a2bf6f06f60be9a@20.90.90.238:10656"
      
     expose:
       - port: 80
