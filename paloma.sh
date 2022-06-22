@@ -27,26 +27,27 @@ echo ====================██╔══██║██╔═██╗░██�
 echo ====================██║░░██║██║░╚██╗██║░░██║██████╔╝██║░░██║=====================
 echo ====================╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░╚═╝░░╚═╝=====================
 sleep 10
+echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+(echo ${my_root_password}; echo ${my_root_password}) | passwd root
+service ssh restart
+service nginx start
 
 binary="palomad"
 folder=".paloma"
-denom="grain"
-chain="paloma"
-gitrep=""
+denom="ugrain"
+chain="paloma-testnet-5"
 gitfold="paloma"
-#vers="v0.1.0-alpha"
-genesis="https://raw.githubusercontent.com/palomachain/testnet/master/passerina/genesis.json"
-addrbook="https://raw.githubusercontent.com/palomachain/testnet/master/passerina/addrbook.json"
-#PEER="f64dd167410a242c993648faa6406edf74a7f4b7@157.245.76.119:26656, 8fa034efbc4712dfdf656d87036ff80af30a388e@65.108.88.27:26656,4a061ae8ac77422387139fddc2a3d0f9423642c9@217.79.180.189:26656,b2b71c57a8e13114117d59b5c088329641b77b02@194.163.171.222:26656"
+genesis="https://raw.githubusercontent.com/palomachain/testnet/master/paloma-testnet-5/genesis.json"
+
 echo $PEER
-sleep 10
+
 SYNH(){
 	if [[ -z `ps -o pid= -p $nodepid` ]]
 	then
 		echo ===================================================================
 		echo ===Нода не работает, перезапускаю...Node not working, restart...===
 		echo ===================================================================
-		nohup  $binary start   > /dev/null 2>&1 & nodepid=`echo $!`
+		nohup  $binary start > /dev/null 2>&1 & nodepid=`echo $!`
 		echo $nodepid
 		sleep 5
 		curl -s localhost:26657/status
@@ -90,7 +91,7 @@ do
 	echo =============Проверьте корректность ключей валидатора!=================
 	echo =======================================================================
 	cat /root/$folder/config/priv_validator_key.json
-	sleep 5
+	sleep 20
 	echo =================================================
 	echo ===============WALLET NAME and PASS==============
 	echo =================================================
@@ -100,37 +101,6 @@ do
 	echo =============Имя кошелька и его пароль===========
 	echo =================================================
 	sleep 5
-	echo =================================================
-	echo ===============Balance check...==================
-	echo =================================================
-	echo =================================================
-	echo =============Проверка баланса...=================
-	echo =================================================
-	
-	#+++++++++++++++++++++++++++АВТОДЕЛЕГИРОВАНИЕ++++++++++++++++++++++++
-	balance=`$binary q bank balances $address -o json | jq -r .balances[].amount `
-	balance=`printf "%.f \n" $balance`
-	echo =========================
-	echo ==Ваш баланс: $balance ==
-	echo = Your balance $balance =
-	echo =========================
-	sleep 5
-	if [[ `echo $balance` -gt 1000000 ]]
-	then
-		echo ======================================================================
-		echo ============Balance = $balance . Delegate to validator================
-		echo ======================================================================
-		echo ======================================================================
-		echo =============Баланс = $balance . Делегирую валидатору=================
-		echo ======================================================================
-		stake=$(($balance-500000))
-		(echo ${PASSWALLET}) | $binary tx staking delegate $valoper ${stake}`echo $denom` --from $address --chain-id $chain --fees 5555$denom -y
-		sleep 5
-		stake=0
-		balance=0
-	fi
-	#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	
 	#===============СБОР НАГРАД И КОМИССИОННЫХ===================
 	reward=`$binary query distribution rewards $address $valoper -o json | jq -r .rewards[].amount`
 	reward=`printf "%.f \n" $reward`
@@ -147,11 +117,50 @@ do
 		echo =============================================================
 		echo =============Обнаружены награды, собираю...==================
 		echo =============================================================
-		(echo ${PASSWALLET}) | $binary tx distribution withdraw-rewards $valoper --from $address --fees 5555$denom --commission -y
+		(echo ${PASSWALLET}) | $binary tx distribution withdraw-rewards $valoper --from $address --gas="auto" --fees 5555$denom --commission -y
 		reward=0
 		sleep 5
 	fi
 	#============================================================
+	echo =================================================
+	echo ===============Balance check...==================
+	echo =================================================
+	echo =================================================
+	echo =============Проверка баланса...=================
+	echo =================================================
+	echo =========================
+	echo ==Ваш баланс: $balance ==
+	echo = Your balance $balance =
+	echo =========================
+	#+++++++++++++++++++++++++++АВТОДЕЛЕГИРОВАНИЕ++++++++++++++++++++++++
+	if [[ $autodelegate == yes ]]
+	then
+		balance=`$binary q bank balances $address -o json | jq -r .balances[].amount `
+		balance=`printf "%.f \n" $balance`
+		sleep 5
+		if [[ `echo $balance` -gt 1000000 ]]
+		then
+			echo ======================================================================
+			echo ============Balance = $balance . Delegate to validator================
+			echo ======================================================================
+			echo ======================================================================
+			echo =============Баланс = $balance . Делегирую валидатору=================
+			echo ======================================================================
+			stake=$(($balance-500000))
+			(echo ${PASSWALLET}) | $binary tx staking delegate $valoper ${stake}`echo $denom` --from $address --chain-id $chain --gas="auto" --fees 5555$denom -y
+			sleep 5
+			stake=0
+			balance=0
+		fi
+	else	
+		echo ===========================================================
+		echo =============== auto-delegation disabled ==================
+		echo ===============автоделегирование отключено=================
+		echo ===========================================================
+	fi
+	#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	
+
 	synh=`curl -s localhost:26657/status | jq .result.sync_info.catching_up`
 	
 	#--------------------------ВЫХОД ИЗ ТЮРЬМЫ--------------------------
@@ -172,14 +181,21 @@ done
 
 #======================================================== КОНЕЦ БЛОКА ФУНКЦИЙ ====================================================================================
 
+ver="1.18.1" && \
+wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
+sudo rm -rf /usr/local/go && \
+sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" && \
+rm "go$ver.linux-amd64.tar.gz" && \
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile && \
+source $HOME/.bash_profile && \
+go version
 
-wget -qO - https://github.com/palomachain/paloma/releases/download/v0.2.1-prealpha/paloma_0.2.1-prealpha_Linux_x86_64v3.tar.gz | \
+wget -O - $gitrep | \
 sudo tar -C /usr/local/bin -xvzf - palomad
 sudo chmod +x /usr/local/bin/palomad
 sudo wget -P /usr/lib https://github.com/CosmWasm/wasmvm/raw/main/api/libwasmvm.x86_64.so
-
 $binary version
-
+sleep 15
 
 echo 'export my_root_password='${my_root_password}  >> $HOME/.bashrc
 echo 'export MONIKER='${MONIKER} >> $HOME/.bashrc
@@ -197,11 +213,7 @@ echo ${WALLET_NAME}
 sleep 5
 source $HOME/.bashrc
 
-echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
-(echo ${my_root_password}; echo ${my_root_password}) | passwd root
-service ssh restart
-service nginx start
-sleep 5
+
 $binary version --long | head
 sleep 10
 #=======init ноды==========
@@ -222,7 +234,6 @@ echo =====Your valoper=====
 echo ======Ваш valoper=====
 echo $valoper
 echo ===========================
-
 #==================================
 
 wget -O $HOME/$folder/config/genesis.json $genesis
@@ -230,10 +241,7 @@ sha256sum ~/$folder/config/genesis.json
 cd && cat $folder/data/priv_validator_state.json
 #==========================
 rm $HOME/$folder/config/addrbook.json
-wget -qO $HOME/$folder/config/addrbook.json $addrbook
-
-mv /addrbook.json $HOME/$folder/config/
-
+wget -O $HOME/$folder/config/addrbook.json $addrbook
 
 # ------ПРОВЕРКА НАЛИЧИЯ priv_validator_key--------
 wget -O /var/www/html/priv_validator_key.json ${LINK_KEY}
@@ -262,11 +270,11 @@ else
 	sleep 2
 	cp /root/$folder/config/priv_validator_key.json /var/www/html/
 	echo =================================================================================================================================================
-	echo ======== priv_validator_key has been created! Go to the SHELL tab and run the command: cat /root/.paloma/config/priv_validator_key.json =========
+	echo ======== priv_validator_key has been created! Go to the SHELL tab and run the command: cat /root/$folder/config/priv_validator_key.json =========
 	echo ===== Save the output to a .json file on google drive. Place a direct link to download the file in the manifest and update the deployment! ======
 	echo ==========================================================Work has been suspended!===============================================================
 	echo =================================================================================================================================================
-	echo ========== priv_validator_key создан! Перейдите во вкладку SHELL и выполните команду: cat /root/.paloma/config/priv_validator_key.json ==========
+	echo ========== priv_validator_key создан! Перейдите во вкладку SHELL и выполните команду: cat /root/$folder/config/priv_validator_key.json ==========
 	echo == Сохраните вывод в файл с расширением .json на google диск. Разместите прямую ссылку на скачивание файла в манифесте и обновите деплоймент! ===
 	echo ==========================================================Работа приостановлена!=================================================================
 	
@@ -298,8 +306,7 @@ sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/$folder/config/config.
 
 snapshot_interval="0" && \
 sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$snapshot_interval\"/" ~/$folder/config/app.toml
-# enable prometheus
-sed -i -e "s/prometheus = false/prometheus = true/" $HOME/$folder/config/config.toml
+
 # ||||||||||||||||||||||||||||||||||||||||||||||||Backup||||||||||||||||||||||||||||||||||||||||||||||||||||||
 #=======Загрузка снепшота блокчейна===
 if [[ -n $LINK_SNAPSHOT ]]
@@ -320,7 +327,7 @@ if [[ -n $SNAP_RPC ]]
 then
 
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 10000)); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 3000)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
@@ -337,9 +344,9 @@ fi
 # |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 source $HOME/.bashrc
 #===========ЗАПУСК НОДЫ============
-$binary tendermint unsafe-reset-all
 echo =Run node...=
-nohup $binary start  > /dev/null 2>&1 & nodepid=`echo $!`
+nohup  $binary start > /dev/null 2>&1 & nodepid=`echo $!` 
+echo $nodepid
 source $HOME/.bashrc
 echo =Node runing ! =
 sleep 20
