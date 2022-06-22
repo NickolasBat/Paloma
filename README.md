@@ -26,6 +26,25 @@ Before you start - subscribe to our news channels:
  
 </div>
 
+<div align="center">
+  
+# Токены GRAIN от комьюнити Akash Network
+***Что бы получить 100 grain отправьте скриншот с вашим адресом из окна логов [Akashlytics](https://www.akashlytics.com/deploy) и адрес текстом в чат [Akash_RU](https://t.me/akash_ru).***
+  
+Пример:
+
+![image](https://user-images.githubusercontent.com/23629420/174967221-2f4409f2-65f2-430e-b4fe-ca9ab8b5a68b.png)
+
+***Первые 15 человек кто установит Akashlitics и создаст аккаунт получат по 7 АКТ для запуска. Просто отправьте в чат скрин из [Akashlytics](https://www.akashlytics.com/deploy) и ваш адрес AKT.***
+  
+Пример:
+  
+![image](https://user-images.githubusercontent.com/23629420/174968988-b30fa8ae-92c5-40e4-9d80-59ef396be016.png)
+  
+Участники обязательно должны состоять в группах [Paloma_RU](https://t.me/paloma_ru) и [Akash_RU](https://t.me/akash_ru)
+
+ </div>
+ 
 # English version
 
 > If you want to migrate your Paloma node to Akash, or if you have priv_validator_key.json, then go [to this step](https://github.com/Dimokus88/paloma#if-you-have-priv_validator_keyjson).
@@ -87,7 +106,7 @@ Thus, you will get a link to a direct download of the file:
 
 * Go to the ```UPDATE``` tab, uncomment the ***LINK_KEY*** line (remove the # symbol) and paste the link to directly download your ```priv_validator_key.json``` file. Then click ```UPDATE DEPLOYMENT```. Confirm the transaction.
 
-*In the process of work, your address ***Paloma*** will be displayed, you need to request tokens to it.
+*In the process of work, your address ***Paloma*** will be displayed, you need to request tokens to it. [Faucet Paloma tokens](https://faucet.palomaswap.com/) or you can request GRAIN in [Akash_RU](https://t.me/akash_ru) (tag @Dimokus  only validator on Akash Network).
 
 <div align="center">
   
@@ -136,7 +155,7 @@ We are waiting for the completion of the deployment.
 
 * In the ```LOGS```  tab , you can view the operation of the node. Synchronization will start from the block that is ***2000*** blocks "below" the last one. For example, if there are ***596562*** blocks in the network at the time the node is launched, then synchronization and "catching up" will start from 596562-2000= ***594562*** blocks. After full synchronization, a validator will be created (***if it has not been created earlier***) and the node will enter the automatic mode of operation. Every ***5 minutes*** the balance will be checked, and if it is positive - auto-delegation to yourself. There will also be a check on the jail, the exit from the jail will be performed automatically.
 
-* In the process of work, your address ***Paloma*** will be displayed, you need to request tokens to it. 
+* In the process of work, your address ***Paloma*** will be displayed, you need to request tokens to it.  [Faucet Paloma tokens](https://faucet.palomaswap.com/) or you can request GRAIN in [Akash_RU](https://t.me/akash_ru) (tag @Dimokus, only validator on Akash Network).
 
 <div align="center">
   
@@ -210,7 +229,7 @@ We are waiting for the completion of the deployment.
 
 * Перейдите во вкладку ```UPDATE```, расскаментируйте строку  ***LINK_KEY*** (удалив символ #) и вставьте ссылку на прямое скачивание вашего файла ```priv_validator_key.json```. После чего нажмите ```UPDATE DEPLOYMENT```. Подтвердите транзакцию.
 
-* В процессе работы будет выводится ваш адрес ***Paloma***, на него нужно запросить токены.
+* В процессе работы будет выводится ваш адрес ***Paloma***, на него нужно запросить токены.  [Faucet Paloma tokens](https://faucet.palomaswap.com/) или можете запросить токены GRAIN в [Akash_RU](https://t.me/akash_ru) (тегните @Dimokus только для валидаторов на Akash).
 <div align="center">
   
 ![image](https://user-images.githubusercontent.com/23629420/173747184-6272f698-d153-4a78-b529-ebf31097daa3.png)
@@ -261,7 +280,7 @@ We are waiting for the completion of the deployment.
 
 * В вкладке ```LOGS``` можете наблюдать работу ноды. Синхронизация начнеся с блока который на ***2000*** блоков "ниже" последнего, например если в сети на момент запуска ноды ***596562*** блоков, то синхронизивароться и "догонять" начнет с 596562-2000= ***594562*** блока. После чего будет создан валидатор (если он не был созда ранее) и нода войдет в автоматический режим работы. Каждые  5 минут будет проверяться баланс, и в случае если он положителен - автоделегирование на себя. Так же будет происходить проверка на тюрьму, выход из тюрьмы будет выполнен автоматически.
 
-* В процессе работы будет выводится ваш адрес ***Paloma***, на него нужно запросить токены. 
+* В процессе работы будет выводится ваш адрес ***Paloma***, на него нужно запросить токены. [Faucet Paloma tokens](https://faucet.palomaswap.com/) или можете запросить токены GRAIN в [Akash_RU](https://t.me/akash_ru) (тегните @Dimokus, только для валидаторов на Akash).
 
 <div align="center">
   
