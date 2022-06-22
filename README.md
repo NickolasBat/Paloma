@@ -23,8 +23,12 @@ Before you start - subscribe to our news channels:
 <div align="center">
   
 [English version](https://github.com/Dimokus88/paloma#english-version) | [Русская версия](https://github.com/Dimokus88/paloma#%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B0%D1%8F-%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F)
+  
+[Node management commands | Команды управления нодой](https://github.com/Dimokus88/Quicksilver/blob/main/README.md#node-management-commands-via-ssh--%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B-%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BD%D0%BE%D0%B4%D0%BE%D0%B9-%D1%87%D0%B5%D1%80%D0%B5%D0%B7-ssh)
  
 </div>
+
+
 
 <div align="center">
   
@@ -293,4 +297,34 @@ We are waiting for the completion of the deployment.
 
 ### Спасибо что используете Akash Network!
 
+___
+
+
+### Node management commands via SSH | Команды управления нодой через SSH
+
+***Get balance | Запрос баланса***
+
+```palomad q bank balances <address>```
+
+***collect rewards | собрать реварды***
+
+```palomad tx distribution withdraw-rewards <valoper_address> --from <address> --fees 5555ugrain --commission -y```
+
+***delegate 1000000ugrain to yourself | заделегировать себе 1000000ugrain***
+
+```palomad tx staking delegate <valoper_address> 1000000ugrain --from <address> --fees 5555ugrain -y```
+
+***redelegation to another validator 1000000ugrain | ределегирование на другого валидатора 1000000ugrain***
+
+```palomad tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000ugrain --from <address> --fees 5555ugrain -y```
+
+***unbond 1000000ugrain | снять с делегации 1000000ugrain***
+  
+```palomad tx staking unbond <addr_valoper> 1000000ugrain --from <name_wallet> --fees 5555ugrain -y```
+
+***send 1000000ugrain to another address | отправить 1000000ugrain на другой адрес***
+```palomad tx bank send <name_wallet> <address> 1000000ugrain --fees 5555ugrain -y```
+
+***vote "yes" for the proposal №65 | проголосовать "yes" по предложению №65***
+```palomad tx gov vote 65 yes --from <name_wallet> --fees 5555ugrain```
 ___
