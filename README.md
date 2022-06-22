@@ -33,7 +33,7 @@ Before you start - subscribe to our news channels:
 <div align="center">
   
 # Токены GRAIN от комьюнити Akash Network
-***Что бы получить 100 grain отправьте скриншот с вашим адресом из окна логов [Akashlytics](https://www.akashlytics.com/deploy) и адрес текстом в чат [Akash_RU](https://t.me/akash_ru).***
+***Что бы получить 100 grain отправьте скриншот с вашим адресом из окна логов [Akashlytics](https://www.akashlytics.com/deploy) и адрес текстом в чат [Akash_RU](https://t.me/akash_ru). А за указанние в своем моникере "Akash" - получите дополнительно еще 50 grain (после того как валидатор будет создан)***
   
 Пример:
 
