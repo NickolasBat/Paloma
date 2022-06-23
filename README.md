@@ -33,20 +33,31 @@ Before you start - subscribe to our news channels:
 <div align="center">
   
 # Токены GRAIN от комьюнити Akash Network
-***Что бы получить 100 grain отправьте скриншот с вашим адресом из окна логов [Akashlytics](https://www.akashlytics.com/deploy) и адрес текстом в чат [Akash_RU](https://t.me/akash_ru). А за указанние в своем моникере "Akash" - получите дополнительно еще 50 grain (после того как валидатор будет создан).***
+***Что бы получить 1000 GRAIN отправьте скриншот с вашим адресом из окна логов [Akashlytics](https://www.akashlytics.com/deploy) и адрес текстом в чат [Akash_RU](https://t.me/akash_ru). А за указанние в своем моникере "Akash" - получите дополнительно еще 500 GRAIN (после того как валидатор будет создан).***
   
-Пример:
 
+***To get 1000 GRAIN from a snapshot from your address from the log window [Akashlytics](https://www.akashlytics.com/deploy) and the address of the text in the chat [Akash](https://t.me/AkashNW) ). For specifying "Akash" in your moniker - get an additional 500 GRAIN (after the validator is created).***
+
+Пример:
+  
+Example:
+  
 ![image](https://user-images.githubusercontent.com/23629420/174967221-2f4409f2-65f2-430e-b4fe-ca9ab8b5a68b.png)
 
 ***Первые 15 человек кто установит Akashlitics и создаст аккаунт получат по 7 АКТ для запуска. Просто отправьте в чат скрин из [Akashlytics](https://www.akashlytics.com/deploy) и ваш адрес AKT.***
+
+***The first 15 people who install Akashlitics and create an account will receive 7 AKTs to start. Just send a screenshot from [Akashlytics](https://www.akashlytics.com/deploy) and your AKT address to the chat.***
+
+Example:
   
 Пример:
   
 ![image](https://user-images.githubusercontent.com/23629420/174968988-b30fa8ae-92c5-40e4-9d80-59ef396be016.png)
   
 Участники обязательно должны состоять в группах [Paloma_RU](https://t.me/paloma_ru) и [Akash_RU](https://t.me/akash_ru)
-
+  
+Participants must be members of the [Paloma]https://t.me/palomachain) and [Akash](https://t.me/AkashNW) groups.
+  
  </div>
  
 # English version
