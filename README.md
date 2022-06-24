@@ -44,16 +44,6 @@ Example:
   
 ![image](https://user-images.githubusercontent.com/23629420/174967221-2f4409f2-65f2-430e-b4fe-ca9ab8b5a68b.png)
 
-***Первые 15 человек кто установит Akashlitics и создаст аккаунт получат по 7 АКТ для запуска. Просто отправьте в чат скрин из [Akashlytics](https://www.akashlytics.com/deploy) и ваш адрес AKT.***
-
-***The first 15 people who install Akashlitics and create an account will receive 7 AKTs to start. Just send a screenshot from [Akashlytics](https://www.akashlytics.com/deploy) and your AKT address to the chat.***
-
-Example:
-  
-Пример:
-  
-![image](https://user-images.githubusercontent.com/23629420/174968988-b30fa8ae-92c5-40e4-9d80-59ef396be016.png)
-  
 Участники обязательно должны состоять в группах [Paloma_RU](https://t.me/paloma_ru) и [Akash_RU](https://t.me/akash_ru)
   
 Participants must be members of the [Paloma]https://t.me/palomachain) and [Akash](https://t.me/AkashNW) groups.
