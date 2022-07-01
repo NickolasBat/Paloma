@@ -27,6 +27,7 @@ echo ====================██╔══██║██╔═██╗░██�
 echo ====================██║░░██║██║░╚██╗██║░░██║██████╔╝██║░░██║=====================
 echo ====================╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░╚═╝░░╚═╝=====================
 sleep 10
+
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 (echo ${my_root_password}; echo ${my_root_password}) | passwd root
 service ssh restart
@@ -35,35 +36,40 @@ service nginx start
 binary="palomad"
 folder=".paloma"
 denom="ugrain"
-chain="paloma-testnet-5"
+chain="paloma-testnet-6"
 gitfold="paloma"
-genesis="https://raw.githubusercontent.com/palomachain/testnet/master/paloma-testnet-5/genesis.json"
+genesis="https://raw.githubusercontent.com/palomachain/testnet/master/paloma-testnet-6/genesis.json"
 
-echo $PEER
 
 SYNH(){
 	if [[ -z `ps -o pid= -p $nodepid` ]]
 	then
+		cd /
 		echo ===================================================================
 		echo ===Нода не работает, перезапускаю...Node not working, restart...===
 		echo ===================================================================
-		nohup  $binary start > /dev/null 2>&1 & nodepid=`echo $!`
+		rm ./nohup.out
+		rm ./nohup.err
+		nohup  $binary start >nohup.out 2>nohup.err </dev/null &  nodepid=`echo $!`
 		echo $nodepid
 		sleep 5
 		curl -s localhost:26657/status
 		synh=`curl -s localhost:26657/status | jq .result.sync_info.catching_up`
 		echo $synh
-		source $HOME/.bashrc
 	else
+		cd /
 		echo =================================
 		echo ===Нода работает.Node working.===
 		echo =================================
 		curl -s localhost:26657/status
+		tail ./nohup.out
+		tail ./nohup.err
 		synh=`curl -s localhost:26657/status | jq .result.sync_info.catching_up`
+		cat /root/$folder/config/priv_validator_key.json
 		echo $nodepid
 		echo $synh
-		source $HOME/.bashrc
 	fi
+	
 	echo =====Ваш адрес =====
 	echo ===Your address ====
 	echo $address
@@ -73,7 +79,6 @@ SYNH(){
 	echo $valoper
 	echo ===========================
 	date
-	source $HOME/.bashrc
 }
 #||||||||||||||||||||||||||||||||||||||
 
@@ -122,21 +127,22 @@ do
 		sleep 5
 	fi
 	#============================================================
-	echo =================================================
-	echo ===============Balance check...==================
-	echo =================================================
-	echo =================================================
-	echo =============Проверка баланса...=================
-	echo =================================================
-	echo =========================
-	echo ==Ваш баланс: $balance ==
-	echo = Your balance $balance =
-	echo =========================
+	
 	#+++++++++++++++++++++++++++АВТОДЕЛЕГИРОВАНИЕ++++++++++++++++++++++++
 	if [[ $autodelegate == yes ]]
 	then
 		balance=`$binary q bank balances $address -o json | jq -r .balances[].amount `
 		balance=`printf "%.f \n" $balance`
+		echo =================================================
+		echo ===============Balance check...==================
+		echo =================================================
+		echo =================================================
+		echo =============Проверка баланса...=================
+		echo =================================================
+		echo =========================
+		echo ==Ваш баланс: $balance ==
+		echo = Your balance $balance =
+		echo =========================
 		sleep 5
 		if [[ `echo $balance` -gt 1000000 ]]
 		then
@@ -190,35 +196,31 @@ echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile &
 source $HOME/.bash_profile && \
 go version
 
-wget -O - $gitrep | \
-sudo tar -C /usr/local/bin -xvzf - palomad
-sudo chmod +x /usr/local/bin/palomad
+cd /
+wget $gitrep
+tar -xvzf paloma_0.2.5-prealpha_Linux_x86_64.tar.gz
+ 
+ls
+mv $binary /usr/local/bin/$binary
+chmod +x /usr/local/bin/$binary
+cd /
 sudo wget -P /usr/lib https://github.com/CosmWasm/wasmvm/raw/main/api/libwasmvm.x86_64.so
 $binary version
-sleep 15
 
-echo 'export my_root_password='${my_root_password}  >> $HOME/.bashrc
-echo 'export MONIKER='${MONIKER} >> $HOME/.bashrc
-echo 'export MNEMONIC='${MNEMONIC} >> $HOME/.bashrc
-echo 'export WALLET_NAME='${WALLET_NAME} >> $HOME/.bashrc
-echo 'export PASSWALLET='${PASSWALLET} >> $HOME/.bashrc
-echo 'export LINK_SNAPSHOT='${LINK_SNAPSHOT} >>  $HOME/.bashrc
-echo 'export SNAP_RPC='${SNAP_RPC} >>  $HOME/.bashrc
-echo 'export LINK_KEY='${LINK_KEY} >>  $HOME/.bashrc
+PASSWALLET=q542we221
+WALLET_NAME=My_wallet
 
-PASSWALLET=$(openssl rand -hex 4)
-WALLET_NAME=$(goxkcdpwgen -n 1)
 echo ${PASSWALLET}
 echo ${WALLET_NAME}
 sleep 5
-source $HOME/.bashrc
+
 
 
 $binary version --long | head
 sleep 10
 #=======init ноды==========
 echo =INIT=
-$binary init "$MONIKER" --chain-id $chain
+$binary init "$MONIKER" --chain-id $chain --home /root/$folder
 sleep 10
 #==========================
 
@@ -247,19 +249,18 @@ wget -O $HOME/$folder/config/addrbook.json $addrbook
 wget -O /var/www/html/priv_validator_key.json ${LINK_KEY}
 file=/var/www/html/priv_validator_key.json
 
-source $HOME/.bashrc
+
 #---проверка наличия пользовательского priv_validator_key---
 if  [[ -f "$file" ]]
 then
 	cd /
+	rm /root/$folder/config/priv_validator_key.json
 	echo ==========priv_validator_key found==========
 	echo ========Обнаружен priv_validator_key========
 	cp /var/www/html/priv_validator_key.json /root/$folder/config/
 	echo ========Validate the priv_validator_key.json file=========
 	echo ==========Сверьте файл priv_validator_key.json============
 	cat /root/$folder/config/priv_validator_key.json
-	sleep 5
-
 else
 	echo =====================================================================
 	echo =========== priv_validator_key not found, making a backup ===========
@@ -269,15 +270,15 @@ else
 	echo =====================================================================
 	sleep 2
 	cp /root/$folder/config/priv_validator_key.json /var/www/html/
-	echo =================================================================================================================================================
-	echo ======== priv_validator_key has been created! Go to the SHELL tab and run the command: cat /root/$folder/config/priv_validator_key.json =========
-	echo ===== Save the output to a .json file on google drive. Place a direct link to download the file in the manifest and update the deployment! ======
-	echo ==========================================================Work has been suspended!===============================================================
-	echo =================================================================================================================================================
-	echo ========== priv_validator_key создан! Перейдите во вкладку SHELL и выполните команду: cat /root/$folder/config/priv_validator_key.json ==========
-	echo == Сохраните вывод в файл с расширением .json на google диск. Разместите прямую ссылку на скачивание файла в манифесте и обновите деплоймент! ===
-	echo ==========================================================Работа приостановлена!=================================================================
-	
+	echo =========================================================================================
+	echo = priv_validator_key has been created! Save the output to a .json file on google drive. =
+	echo == Place a direct link to download the file in the manifest and update the deployment! ==
+	echo ==================================Work has been suspended!===============================
+	echo =========================================================================================
+	echo = priv_validator_key создан! Сохраните вывод в файл с расширением .json на google диск. =
+	echo ==== Разместите прямую ссылку на скачивание файла в манифесте и обновите деплоймент! ====
+	echo ====================================Работа приостановлена!===============================
+	cat /root/$folder/config/priv_validator_key.json
 	sleep infinity
 fi
 # -----------------------------------------------------------
@@ -285,9 +286,11 @@ fi
 $binary config chain-id $chain
 
 $binary config keyring-backend os
+sleep 5
 
-sleep 10
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025$denom\"/;" ~/$folder/config/app.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025$denom\"/;" $HOME/$folder/config/app.toml
+external_address=$(wget -qO- eth0.me)
+sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/$folder/config/config.toml
 
 pruning="custom" && \
 pruning_keep_recent="100" && \
@@ -298,14 +301,14 @@ sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_rec
 sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/$folder/config/app.toml && \
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/$folder/config/app.toml
 
-peers="$PEER"
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/$folder/config/config.toml
+sed -i -e "s/^seeds *=.*/seeds = \"$SEED\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEER\"/" $HOME/$folder/config/config.toml
 
 indexer="null" && \
 sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/$folder/config/config.toml
 
 snapshot_interval="0" && \
-sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$snapshot_interval\"/" ~/$folder/config/app.toml
+sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$snapshot_interval\"/" $HOME/$folder/config/app.toml
+
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||Backup||||||||||||||||||||||||||||||||||||||||||||||||||||||
 #=======Загрузка снепшота блокчейна===
@@ -326,8 +329,8 @@ source $HOME/.bashrc
 if [[ -n $SNAP_RPC ]]
 then
 
-LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 3000)); \
+LATEST_HEIGHT=`curl -s $SNAP_RPC/block | jq -r .result.block.header.height`; \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - $SHIFT)); \
 TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
 
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
@@ -344,17 +347,18 @@ fi
 # |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 source $HOME/.bashrc
 #===========ЗАПУСК НОДЫ============
+
 echo =Run node...=
-nohup  $binary start > /dev/null 2>&1 & nodepid=`echo $!` 
+cd /
+nohup  $binary start >nohup.out 2>nohup.err </dev/null &  nodepid=`echo $!`
 echo $nodepid
 source $HOME/.bashrc
-echo =Node runing ! =
 sleep 20
 synh=`curl -s localhost:26657/status | jq .result.sync_info.catching_up`
 echo $synh
+tail ./nohup.out
+tail ./nohup.err
 sleep 2
-#==================================
-source $HOME/.bashrc
 #=========Пока нода не синхронизирована - повторять===========
 while [[ $synh == true ]]
 do
@@ -380,7 +384,6 @@ do
 	echo $val
 	synh=`curl -s localhost:26657/status | jq .result.sync_info.catching_up`
 	echo $synh
-	source $HOME/.bashrc
 	if [[ -z "$val" ]]
 	then
 		echo =Создание валидатора... Creating a validator...=
