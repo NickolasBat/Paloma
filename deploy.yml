@@ -10,7 +10,7 @@ services:
      - "LINK_KEY=LINK_TO_PRIV_VALIDATOR_KEY_JSON_DDOWNLOAD" # Ссылка на размещенный pirv-validator_key.json (прямое скачивание). Подойдет и от других тестнетов на базе Cosmos. link to the posted pirv-validator_key.json (direct download). It will also work from other Cosmos-based testnets.
      - "gitrep=https://github.com/palomachain/paloma/releases/download/v0.2.5-prealpha/paloma_0.2.5-prealpha_Linux_x86_64.tar.gz"
      - "SNAP_RPC=http://165.227.75.192:26657"
-     - "PEER=ae611ea23c874ffba047f3d933509087e1ed90ad@86.32.74.154:26657,2de64ce284c5ef38e42190daa0f2e2b055b37e1b@165.227.75.192:26656,"
+     - "PEER=ae611ea23c874ffba047f3d933509087e1ed90ad@86.32.74.154:26657,2de64ce284c5ef38e42190daa0f2e2b055b37e1b@165.227.75.192:26656"
      #- "addrbook=https://raw.githubusercontent.com/palomachain/testnet/master/paloma-testnet-6/addrbook.json"
      - "autodelegate=no"
      - "SHIFT=2000"
