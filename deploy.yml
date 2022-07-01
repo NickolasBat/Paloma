@@ -3,19 +3,19 @@ version: "2.0"
 
 services:
   app:
-    image: dimokus88/paloma:0.2.6
+    image: dimokus88/paloma:0.3.2
 
     
     env:
      
      - "MONIKER=NODE_NAME" #имя ноды (Если нетрудно, укажите в имени ноды Akash, например:DimokusAkash). node name (If it is not difficult, specify Akash in the node name, for example:DimokusAkash). 
      - "MNEMONIC=YOUR_WALLET_MNEMONIC" # seed phrase from the Paloma wallet. seed фраза от кошелька Paloma.
-     # - "LINK_KEY=LINK_TO_PRIV_VALIDATOR_KEY.JSON_DDOWNLOAD" # Ссылка на размещенный pirv-validator_key.json (прямое скачивание). Подойдет и от других тестнетов на базе Cosmos. link to the posted pirv-validator_key.json (direct download). It will also work from other Cosmos-based testnets.
-     - "gitrep=https://github.com/palomachain/paloma/releases/download/v0.2.4-prealpha/paloma_0.2.4-prealpha_Linux_x86_64.tar.gz"
-     # - "addrbook=https://raw.githubusercontent.com/Dimokus88/Paloma/main/addrbook.json"
+     - "LINK_KEY=LINK_TO_PRIV_VALIDATOR_KEY.JSON_DDOWNLOAD" # Ссылка на размещенный pirv-validator_key.json (прямое скачивание). Подойдет и от других тестнетов на базе Cosmos. link to the posted pirv-validator_key.json (direct download). It will also work from other Cosmos-based testnets.
+     - "gitrep=https://github.com/palomachain/paloma/releases/download/v0.2.5-prealpha/paloma_0.2.5-prealpha_Linux_x86_64.tar.gz"
+     - "addrbook=https://raw.githubusercontent.com/palomachain/testnet/master/paloma-testnet-6/addrbook.json"
      - "autodelegate=yes" # включение\открлючение автоделегирования, награды собираются автоматически.
-     - "PEER=41a896277ddf0ee88fa19be93fee62b9ffaa9d28@185.244.181.27:26656,030b255fa1575f2b3b0c7f23babddb4e1daeafb1@134.209.254.198:28656,b8c2757704ecf9c60cc76ecd1e33111082f5d8ba@38.242.213.87:26656,4035d1aff24f9fedb782b28e7fdae8ebb34c1876@149.102.136.103:26656,72597679eb58254328f7ca9733badd6fa0c03b84@34.71.168.151:26656,a9321531d52d55327a1073bcc2e1a1b0f0ceca41@95.31.16.222:26656,271d472618e15794a570ec105232910f18ea2de5@188.166.12.124:26656,f1122de16e53d0e10a15b760602cebf1d51cc069@38.242.241.192:26656,2af5498ebd7feb5b7b22f51f3649c4c358041c86@128.199.127.179:10656,a9cf416e82fa636440141bde43b0fdf9ab1c99b1@38.242.241.42:26656,132007500c54f3c34aa0ca13962fd68e3efdd457@13.52.231.90:36416,ae92622cfcd98db26510c1235dbb30dcaf37e4f6@167.99.38.54:26656,74251408de37c2ca43aee195b479cb2d5a9f0e73@185.60.134.153:10656,6cc4e54bd7a309b4a244ba17aa3d5444a5d2a85a@178.128.51.108:26656,3bd6035cd2d551a04b2fb897ac362f366acb4b65@45.55.34.66:26656,722db7354ecb79e696c82bd44455d89d28ddfddc@185.249.225.121:26656,2e5ed4469cba59b0d5a6c0d1489855e55ef275a6@34.71.78.96:26656,4c9808a10aa0cef20fb6445e1ab50847b2350646@34.125.216.3:26656,f8488de31455a63126971c8df445e430e329d6f0@13.212.1.29:36416,0fd16800f5a96f3e25babc44973b5659095ab3c6@38.242.238.107:26656,790e895c0ee260b6de66c2b4fa251b4abb7ab5e0@109.238.12.51:26656,ae9abb5f65f5f17244371c2de1a2669902505b34@178.128.53.241:26656,663add16433aecf5a5f017db22a1976b9f335a8b@46.101.119.246:26656,405ac3387b0016fac2d63751d04addfca5508a55@128.199.112.150:36416,f8be7027ba9675f1a4d0c1e860892a42cc673d63@51.11.110.80:10656,9fb1950c2cf4d7b07d8d5ef319d22e3df81a77fe@178.128.116.150:36416,007d5c49c26971d0e1cedc1cb5f8e989c0f8aa02@34.88.253.114:26656,9d4b3832a387c1d1cf1a0d964d11647d8532fe29@159.223.211.4:26656,fa5ab5f0d78de3fbad9006faeab4936c40b8a834@138.201.139.175:20456,8b56b1d81fa74aeee0423846c4e0e01650dce8e9@137.184.3.67:26656,f4ca35f06f6abb573bba1c18bfa886f3fde51ae3@80.93.19.96:26656,0c97b5fbaed59157aeed2e90d53c101cac64594b@5.189.170.154:10656,7248daca64b89b9b3c09df0f61ff0ed0304d1b3b@146.148.100.22:26656,66b46f31ec80bac4908126c57d29ba71e640e378@89.163.217.51:10656,542d60dd2b126b9fee343c52a90fc357556dcd9f@46.228.199.8:26656,b159364b4e6a3036c36ef6c7c690c5fbc81fa9c4@65.108.71.92:54056,439110349e8a8b70088aed6f26d7c22051c8f292@167.235.251.7:26656,0ff1bfc16d3dea12c375e9df5294171e71e9006b@178.18.241.51:26656,74d0f2c710825ef3a14376cc9788c203b1e6e7e5@68.183.8.108:26656,67c9dd524f458ede506a397724823e1c9204691d@34.125.207.186:26656,4e2b1bf7d32da06b42a038d207418f5c9fe16e26@176.126.87.119:26656,44d8b11d13064323284a5dbeb24c1ed7d38cacca@46.101.239.140:26656,76b3688f5a4df761260cce1c71cdcb4b959ea609@95.70.209.212:26656,7e93f6409ade895fe301b502d6fb9dfb96343a34@135.125.5.34:54056,145e5ce4b84f5078cb17eaef012a8461108fe9c1@38.242.245.159:26656,6691bc4546287b1bb3c42a76b55dbdfa688ba39f@95.216.151.76:36416"
-     - "SNAP_RPC=http://164.90.134.139:26657"
+     #- "PEER="
+     #- "SNAP_RPC="
      
     expose:
       - port: 80
