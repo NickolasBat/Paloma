@@ -36,7 +36,7 @@ Before you start - subscribe to our news channels:
 
 ![image](https://user-images.githubusercontent.com/23629420/174968988-b30fa8ae-92c5-40e4-9d80-59ef396be016.png)
 
-При наличии выделенных токенов GRAIN, учасникам указавшим в моникере "Akash" будут перечислены дополнительные токены тестовй сети.
+При наличии выделенных токенов ```GRAIN```, участникам указавшим в моникере "***Akash***" (например: Dimokus_Akash)  будут перечислены дополнительные токены тестовой сети.
 
 Участники обязательно должны состоять в группах [Paloma_RU](https://t.me/paloma_ru) и [Akash_RU](https://t.me/akash_ru)
 
