@@ -30,7 +30,7 @@ Before you start - subscribe to our news channels:
 
 <div align="center">
 
-***Первые 10 человек кто установит Akashlitics и создаст аккаунт получат по 7 АКТ для запуска. Просто отправьте в чат скрин из [Akashlytics](https://www.akashlytics.com/deploy) и ваш адрес AKT.***
+***Первые 10 новых учасников группы [Akash_RU](https://t.me/akash_ru) ,  кто установит Akashlitics и создаст аккаунт - получат по 7 АКТ для запуска ноды валидатора Paloma. Просто отправьте в чат скрин из [Akashlytics](https://www.akashlytics.com/deploy) и ваш адрес AKT.***
 
 Пример:
 
