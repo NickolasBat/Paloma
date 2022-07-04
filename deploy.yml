@@ -12,7 +12,7 @@ services:
      - "SNAP_RPC=http://165.227.75.192:26657"
      - "PEER=ae611ea23c874ffba047f3d933509087e1ed90ad@86.32.74.154:26657,2de64ce284c5ef38e42190daa0f2e2b055b37e1b@165.227.75.192:26656"
      #- "addrbook=https://raw.githubusercontent.com/palomachain/testnet/master/paloma-testnet-6/addrbook.json"
-     - "autodelegate=no"
+     - "autodelegate=yes"
      - "SHIFT=2000"
      
     expose:
