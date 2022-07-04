@@ -32,14 +32,14 @@ echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 (echo ${my_root_password}; echo ${my_root_password}) | passwd root
 service ssh restart
 service nginx start
-
+sleep 1
 binary="palomad"
 folder=".paloma"
 denom="ugrain"
 chain="paloma-testnet-6"
 gitfold="paloma"
 genesis="https://raw.githubusercontent.com/palomachain/testnet/master/paloma-testnet-6/genesis.json"
-
+sleep 1
 
 SYNH(){
 	if [[ -z `ps -o pid= -p $nodepid` ]]
@@ -195,33 +195,28 @@ rm "go$ver.linux-amd64.tar.gz" && \
 echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile && \
 source $HOME/.bash_profile && \
 go version
-
+sleep 1
 cd /
 wget $gitrep
 tar -xvzf paloma_0.2.5-prealpha_Linux_x86_64.tar.gz
- 
-ls
+ ls
 mv $binary /usr/local/bin/$binary
 chmod +x /usr/local/bin/$binary
 cd /
 sudo wget -P /usr/lib https://github.com/CosmWasm/wasmvm/raw/main/api/libwasmvm.x86_64.so
 $binary version
-
+sleep 1
 PASSWALLET=q542we221
 WALLET_NAME=My_wallet
 
 echo ${PASSWALLET}
 echo ${WALLET_NAME}
-sleep 5
+sleep 2
 
-
-
-$binary version --long | head
-sleep 10
 #=======init ноды==========
 echo =INIT=
 $binary init "$MONIKER" --chain-id $chain --home /root/$folder
-sleep 10
+sleep 5
 #==========================
 
 #===========ДОБАВЛЕНИЕ КОШЕЛЬКА============
@@ -289,9 +284,10 @@ $binary config keyring-backend os
 sleep 5
 
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025$denom\"/;" $HOME/$folder/config/app.toml
+sleep 1
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/$folder/config/config.toml
-
+sleep 1
 pruning="custom" && \
 pruning_keep_recent="100" && \
 pruning_keep_every="0" && \
@@ -300,15 +296,15 @@ sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/$folder/config/app.tom
 sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/$folder/config/app.toml && \
 sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/$folder/config/app.toml && \
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/$folder/config/app.toml
-
+sleep 1
 sed -i -e "s/^seeds *=.*/seeds = \"$SEED\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEER\"/" $HOME/$folder/config/config.toml
-
+sleep 1
 indexer="null" && \
 sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/$folder/config/config.toml
-
+sleep 1
 snapshot_interval="0" && \
 sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$snapshot_interval\"/" $HOME/$folder/config/app.toml
-
+sleep 1
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||Backup||||||||||||||||||||||||||||||||||||||||||||||||||||||
 #=======Загрузка снепшота блокчейна===
