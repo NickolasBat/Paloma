@@ -13,7 +13,7 @@ services:
      - "SNAP_RPC=http://rpc2.bonded.zone:21557"
      - "link_peer=https://raw.githubusercontent.com/Dimokus88/Paloma/main/PEER"
      - "link_rpc=https://raw.githubusercontent.com/Dimokus88/Paloma/main/state_sync"
-     - "autodelegate=no"
+     - "autodelegate=yes"
      - "SHIFT=5000"
      
     expose:
