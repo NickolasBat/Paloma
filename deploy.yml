@@ -3,7 +3,7 @@ version: "2.0"
 
 services:
   app:
-    image: dimokus88/paloma:0.4.1
+    image: dimokus88/paloma:0.4.2
     env:   
      - "my_root_password=" # пароль root для подключения по ssh
      - "MONIKER=NODE_NAME" #имя ноды (Если нетрудно, укажите в имени ноды Akash, например:DimokusAkash). node name (If it is not difficult, specify Akash in the node name, for example:DimokusAkash). 
