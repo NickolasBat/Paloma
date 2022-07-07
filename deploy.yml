@@ -10,7 +10,7 @@ services:
      - "MNEMONIC=YOUR_WALLET_MNEMONIC" # seed phrase from the Paloma wallet. seed фраза от кошелька Paloma.
      - "LINK_KEY=LINK_TO_PRIV_VALIDATOR_KEY_JSON_DDOWNLOAD" # Ссылка на размещенный pirv-validator_key.json (прямое скачивание). Подойдет и от других тестнетов на базе Cosmos. link to the posted pirv-validator_key.json (direct download). It will also work from other Cosmos-based testnets.
      - "gitrep=https://github.com/palomachain/paloma/releases/download/v0.2.5-prealpha/paloma_0.2.5-prealpha_Linux_x86_64.tar.gz"
-     - "SNAP_RPC=praetor.ingress.d3akash.cloud:30004"
+     - "SNAP_RPC=http://rpc2.bonded.zone:21557"
      - "link_peer=https://raw.githubusercontent.com/Dimokus88/Paloma/main/PEER"
      - "link_rpc=https://raw.githubusercontent.com/Dimokus88/Paloma/main/state_sync"
      - "autodelegate=no"
